@@ -50,7 +50,7 @@ interface Fetch {
      * @throws FetchException if this instance of Fetch has been closed.
      * @return Instance
      * */
-    fun enqueue(request: Request, func: Func<Request>? = null, func2: Func<Error>? = null): Fetch
+    fun enqueue(request: Request, onRequested: Func<Request>? = null, onError: Func<Error>? = null): Fetch
 
     /**
      * Queues a list of requests for downloading. If Fetch fails to enqueue a
@@ -73,7 +73,7 @@ interface Fetch {
      * @throws FetchException if this instance of Fetch has been closed.
      * @return Instance
      * */
-    fun enqueue(requests: List<Request>, func: Func<List<Pair<Request, Error>>>? = null): Fetch
+    fun enqueue(requests: List<Request>, onEnqueuedMultiple: Func<List<Pair<Request, Error>>>? = null): Fetch
 
     /** Pause a queued or downloading download.
      * @param ids ids of downloads to be paused.
